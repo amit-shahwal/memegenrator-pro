@@ -9,7 +9,7 @@ router.get("/logout", authController.logout);
 router.post("/signup", authController.signup);
 
 router.post(
-  "/memeupload",authController.protect,
+  "/memeupload",
   memeController.uploadUserPhoto,
   memeController.resizeUserPhoto,
   memeController.memeupload
