@@ -5,6 +5,8 @@ const viewRouter = require("./viewsRoutes");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const compression= require('compression');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 
 dotenv.config({ path: "./config.env" });
@@ -28,6 +30,10 @@ mongoose
 app.use(express.json());
 
 app.use(cookieParser());
+app.use(mongoSanitize());
+
+// Data sanitization against XSS
+app.use(xss());
 
 app.use(express.static(`${__dirname}/public`));
 app.use((req, res, next) => {
