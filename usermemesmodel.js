@@ -10,7 +10,6 @@ const usermemeSchema = new mongoose.Schema({
   likedid: [
     {
       type: String,
-      unique: true,
     },
   ],
   creatername: String,

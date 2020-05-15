@@ -235,7 +235,7 @@ exports.photoliked = async (req, res, next) => {
         {
           $push: { likedid: req.body.likedid },
         },
-        { new: true, runValidators: true }
+        { new: true }
       );
       res.status(200).json({
         status: "success",
