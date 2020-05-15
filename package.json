@@ -4,7 +4,7 @@
   "description": "social network for memers",
   "main": " node app.js",
   "scripts": {
-    "start": "app.js",
+    "start": " node app.js",
     "start:prod": "NODE_ENV=production nodemon app.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
