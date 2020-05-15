@@ -2,10 +2,10 @@
   "name": "memegenerate",
   "version": "1.0.0",
   "description": "social network for memers",
-  "main": "app.js",
+  "main": " node app.js",
   "scripts": {
     "start": "app.js",
-    "start:prod": "NODE_ENV=production nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon app.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
