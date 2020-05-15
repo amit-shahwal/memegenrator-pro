@@ -5,10 +5,9 @@ const viewRouter = require("./viewsRoutes");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const compression= require('compression');
-const bodyParser = require('body-parser');
+
 
 dotenv.config({ path: "./config.env" });
-
 const app = express();
 const port = process.env.PORT;
 
@@ -29,7 +28,7 @@ mongoose
 app.use(express.json());
 
 app.use(cookieParser());
-app.use(bodyParser.json());
+
 app.use(express.static(`${__dirname}/public`));
 app.use((req, res, next) => {
   //console.log('Hello from the middleware 👋');
