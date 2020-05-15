@@ -19,8 +19,6 @@ const createSendToken = (user, statuscode, res) => {
     ),
 
     httpOnly: true,
-   
-    
   };
   res.cookie("jwt", token, cookieOptions);
   user.password = undefined;
@@ -60,21 +58,16 @@ exports.logout = (req, res) => {
   res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
+    secure: false,
   });
   res.status(200).json({ status: "success" });
 };
 exports.protect = async (req, res, next) => {
   try {
     let token;
-    if (
-      req.headers.authorization ||
-      req.headers.authorization.startsWith('Bearer')
-    ) {
-      token = req.headers.authorization.split(' ')[1];
-    }
-    else {
-    token = req.cookies.jwt;
-    }
+   
+      token = req.cookies.jwt;
+    
     if (!(await jwt.verify(token, process.env.JWT_SECRET))) {
       throw new Error("you are not logged in to see this things");
     }
@@ -89,7 +82,7 @@ exports.protect = async (req, res, next) => {
     }
     req.user = freshexist;
     // console.log(req.user.role);
-    res.locals.useer=freshexist;
+    res.locals.useer = freshexist;
     next();
   } catch (err) {
     res.status(400).json({
@@ -189,9 +182,9 @@ exports.signup = async (req, res, next) => {
 };
 exports.iflogin = async (req, res, next) => {
   try {
-    if (!req.cookies.jwt) 
-    {//console.log("1");
-    return next();
+    if (!req.cookies.jwt) {
+      //console.log("1");
+      return next();
     }
     if (!(await jwt.verify(req.cookies.jwt, process.env.JWT_SECRET))) {
       // console.log("2");
@@ -206,7 +199,6 @@ exports.iflogin = async (req, res, next) => {
     if (!freshexist) {
       //console.log("3");
       return next();
-
     }
     //for some reason window.location not working
     ///console.log(window.location.pathname);
@@ -218,7 +210,7 @@ exports.iflogin = async (req, res, next) => {
     });
     //  location.replace("/memes");
   } catch (err) {
-   // console.log(err);
+    // console.log(err);
     return next();
   }
 };
