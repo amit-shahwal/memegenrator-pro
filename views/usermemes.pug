@@ -1,0 +1,55 @@
+extends base
+block contentcss
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+  
+
+
+block content
+  
+  main.main
+
+    .container
+
+      .card-columns
+        
+        each meme in memes
+          
+          .card(style='width:350px')
+
+            img.card-img-top(src=`/img/users/${meme.photo}` style='width:100%')
+            .card-body
+              center
+                h4.card-title
+
+                h3 CREATED BY: #{meme.creatername}
+              center
+
+
+
+                //- form.form.form--likes(action='/likessubmit' method='POST')
+                //-   .form__group
+
+                //-     input#photo.form__input(type='text' value=`${meme.photo}` name='photo')
+                //-   .form__group
+
+                //-     input#count.form__input(type='number' value=`${meme.likes}`  name='likes' )
+                //-     .form__group
+                //-     button.btn.btn--green LIKE
+              
+                  specialphoto= `${meme.photo}`
+                  speciallikes= `${meme.likes}
+                  `
+                center  
+                  a.nav__el.nav__el--memelikes &nbsp &nbsp &nbsp LIKES❤#{meme.likedid.length}
+                  br
+                  input.btn.btn(type='button' id=`${meme.likes}` placeholder=`${meme.photo}` value="LIKE" alt=`${useer._id}`  onclick='memelikess(placeholder,id,alt)')         
+                  br
+                  a(href=`/img/users/${meme.photo}` download='')
+                    b DOWNLOAD
+
+                  

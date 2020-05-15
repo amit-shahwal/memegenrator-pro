@@ -1,0 +1,28 @@
+extends base
+block contentcss
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')  
+block content
+  main.main
+
+    .container
+
+      .card-columns
+        each meme in (memes)
+            .card(style='width:300px')
+
+              img.card-img-top(src=`${meme.url}`  style='width:100%')
+              .card-body
+              
+                h4.card-title 
+                
+                  center  
+                    a(href=`${meme.url}` download='')
+                     b DOWNLOAD                
+                
+
+        

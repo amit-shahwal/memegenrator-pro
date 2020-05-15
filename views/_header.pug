@@ -1,0 +1,33 @@
+
+header.header
+    nav.nav.nav--tours
+        - if (!useer)
+            a.nav__el(href='/') WHY THIS ?
+
+        if useer
+            a.nav__el.nav__el--meme MEMES-GENERATOR
+            //input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+            a.nav__el.nav__el--uploadmeme UPLOAD MEMES
+            
+            a.nav__el(href='/memes') API MEMES
+
+            form.nav__search
+            button.nav__search-btn
+                svg
+                //use(xlink:href='img/icons.svg#icon-search')
+                //input.nav__search-input(type='text' placeholder='Search tours')
+                
+    .header__logo
+        img(src='img/mememaker.png' alt='meme_logo')
+    nav.nav.nav--user
+        if useer
+
+            a.nav__el(href='/usermemes') HOME
+            a.nav__el(href='#') 
+                //img.nav__user-img(src='img/user.jpg' alt='User photo')
+                span #{useer.name}
+            a.nav__el.nav__el--logout Log out
+
+        else
+            a.nav__el(href="/login") Log in
+            a.nav__el.nav__el--cta(href="/signup") Sign up

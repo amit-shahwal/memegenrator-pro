@@ -1,0 +1,34 @@
+extends base
+
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md MEME UPLOAD
+          
+          //- WITHOUT API
+          //- form.form.form-user-data(action='/submit-user-data' method='POST' enctype='multipart/form-data')
+          
+          //- WITH API
+          form.form.form-user-data
+            .form__group
+              label.form__label(for='name') Name
+              input#name.form__input(type='text', value=`${useer.name}`, required, name='name' disabled)
+            .form__group.ma-bt-md
+              label.form__label(for='email') Email address
+              input#email.form__input(type='email', value=`${useer.email}`, required, name='email' disabled)
+            .form__group.form__photo-upload
+              
+              input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+              label(for='photo') ChoosE your own MEME
+            h1 AFTER SELECTING IMAGE PROCEED TO SAVE IN FEEDS  
+            .form__group.right
+            BR
+              button.btn.btn--small.btn--green SAVE
+  
