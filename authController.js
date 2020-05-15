@@ -66,7 +66,12 @@ exports.logout = (req, res) => {
 exports.protect = async (req, res, next) => {
   try {
     let token;
-
+    if (
+      req.headers.authorization ||
+      req.headers.authorization.startsWith('Bearer')
+    ) {
+      token = req.headers.authorization.split(' ')[1];
+    }
     token = req.cookies.jwt;
 
     if (!(await jwt.verify(token, process.env.JWT_SECRET))) {
