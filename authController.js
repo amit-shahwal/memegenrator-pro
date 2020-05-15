@@ -72,8 +72,9 @@ exports.protect = async (req, res, next) => {
     ) {
       token = req.headers.authorization.split(' ')[1];
     }
+    else {
     token = req.cookies.jwt;
-
+    }
     if (!(await jwt.verify(token, process.env.JWT_SECRET))) {
       throw new Error("you are not logged in to see this things");
     }
