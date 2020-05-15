@@ -89,6 +89,7 @@ exports.protect = async (req, res, next) => {
     }
     req.user = freshexist;
     // console.log(req.user.role);
+    res.locals.useer=freshexist;
     next();
   } catch (err) {
     res.status(400).json({
