@@ -4,11 +4,11 @@
  memelikess = async (data, count,id) => {
   try {
  // document.getElementById.getElementById("myCheck").checked = true;
- console.log(id,data);
+// console.log(id,data);
 
     const liked = await axios({
       method: "POST",
-      url: "http://127.0.0.1:9000/api/v1/users/likedphoto",
+      url: "/api/v1/users/likedphoto",
       data: {
         photo:data,
         likedid: id,

@@ -4,6 +4,7 @@ const userRouter = require("./userRoute");
 const viewRouter = require("./viewsRoutes");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+const compression= require('compression');
 
 dotenv.config({ path: "./config.env" });
 
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
   //console.log('Hello from the middleware 👋');
   next();
 });
-
+app.use(compression());
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
  // console.log(req.cookies);

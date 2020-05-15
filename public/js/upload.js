@@ -8,10 +8,10 @@ export const uploadmeme = async (data, type) => {
  
     const res = await axios({
       method: 'POST',
-      url: "http://127.0.0.1:9000/api/v1/users/memeupload",
+      url: "/api/v1/users/memeupload",
       data
     });
-      console.log(res.data.status);
+     // console.log(res.data.status);
     if (res.data.status === 'success') {
       showAlert('success', ` uploaded successfully!`);
       window.location='/usermemes'
