@@ -5,6 +5,7 @@ const viewRouter = require("./viewsRoutes");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const compression= require('compression');
+const cors = require('cors');
 
 
 dotenv.config({ path: "./config.env" });
@@ -13,7 +14,7 @@ const app = express();
 const port = process.env.PORT;
 
 const DB =process.env.DATABASE;
-
+app.use(cors());
 app.set("view engine", "pug");
 app.set("views", `${__dirname}/views`);
 mongoose
@@ -23,7 +24,7 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    console.log("success");
+   // console.log("success");
   });
 
 app.use(express.json());

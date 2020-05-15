@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const User = require("./usermodel");
 const Meme = require("./mememodel");
-const Usermeme = require("./usermemesmodel");
+const Newusermeme = require("./usermemesmodel");
 const viewcontroller = require("./viewController");
 
 const signToken = (id) => {
@@ -19,8 +19,6 @@ const createSendToken = (user, statuscode, res) => {
     ),
 
     httpOnly: true,
-    
-    
   };
   res.cookie("jwt", token, cookieOptions);
   user.password = undefined;
@@ -182,12 +180,12 @@ exports.signup = async (req, res, next) => {
 };
 exports.iflogin = async (req, res, next) => {
   try {
-    if (!req.cookies.jwt) 
-    {//console.log("1");
-    return next();
+    if (!req.cookies.jwt) {
+     // console.log("1");
+      return next();
     }
     if (!(await jwt.verify(req.cookies.jwt, process.env.JWT_SECRET))) {
-      // console.log("2");
+     // console.log("2");
       return next();
     }
     //verification of req.cookies.jwt
@@ -197,13 +195,12 @@ exports.iflogin = async (req, res, next) => {
     const freshexist = await User.findById(freshuser.id);
     // if(freshuser.id)
     if (!freshexist) {
-      //console.log("3");
+    //  console.log("3");
       return next();
-
     }
     //for some reason window.location not working
     ///console.log(window.location.pathname);
-    const memes = await Usermeme.find();
+    const memes = await Newusermeme.find();
     //  console.log(memes);
     return res.status(200).render("usermemes", {
       title: "users memes",
@@ -211,38 +208,70 @@ exports.iflogin = async (req, res, next) => {
     });
     //  location.replace("/memes");
   } catch (err) {
-   // console.log(err);
+    // console.log(err);
     return next();
   }
 };
 
+// exports.photoliked = async (req, res, next) => {
+//   try {
+//     // console.log(req.body);
+//     // console.log(`${req.body.liked}`);
+//     //const check = await Newusermeme.find(
+//       const check = await Newusermeme.find(
+//         { photo: req.body.photo },
+//         { likedid: req.body.likedid }
+//       );
+
+//     console.log(check);
+//     //console.log(check.likedid.length);
+//     console.log(check[0].likedid[0]);
+//     if (check[0].likedid[0] == req.body.likedid) {
+//       throw new Error("already exist");
+//     }
+//       const newuser = await Newusermeme.findOneAndUpdate(
+//         { photo: req.body.photo },
+
+//         {
+//           $push: { likedid: req.body.likedid },
+//         },
+//         { new: true, runValidators: false },{ validateBeforeSave: false }
+//       );
+//       res.status(200).json({
+//         status: "success",
+//         newuser,
+//       });
+
+//   } catch (err) {
+//     res.status(400).json({
+//       status: "failed",
+//       message: err.message,
+//     });
+//   }
+// };
 exports.photoliked = async (req, res, next) => {
   try {
-    // console.log(req.body);
-    // console.log(`${req.body.liked}`);
-    const check = await Usermeme.find(
+    const check = await Newusermeme.find(
       { photo: req.body.photo },
-      { likedid: req.body.likedid }
-    );
-
-    // console.log(check[0].likedid[0]);
-    if (check[0].likedid[0] == req.body.likedid) {
-      throw new Error("already exist");
-    } else {
-      const newuser = await Usermeme.findOneAndUpdate(
+     // { photo: req.body.photo }
+    ).where({ likedid: {$in:[req.body.likedid]} });
+   // console.log(check);
+    //console.log(check.length);
+   if(check.length==0){
+      const newuser = await Newusermeme.findOneAndUpdate(
         { photo: req.body.photo },
 
         {
           $push: { likedid: req.body.likedid },
         },
-        { new: true, runValidators: true }
+        { new: true, runValidators: false }
       );
       res.status(200).json({
         status: "success",
         newuser,
       });
-    }
-  } catch (err) {
+    }}
+   catch (err) {
     res.status(400).json({
       status: "failed",
       message: err.message,

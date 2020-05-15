@@ -1,7 +1,7 @@
 const multer = require("multer");
 const sharp = require("sharp");
 
-const Usermeme = require("./usermemesmodel");
+const Newusermeme = require("./usermemesmodel");
 
 const multerStorage = multer.memoryStorage();
 
@@ -27,9 +27,9 @@ exports.resizeUserPhoto = async (req, res, next) => {
     req.file.filename = `${Date.now()}.jpeg`;
 
     await sharp(req.file.buffer)
-      .resize(800, 800)
+      .resize(500, 500)
       .toFormat("jpeg")
-      .jpeg({ quality: 100 })
+      .jpeg({ quality: 90 })
       .toFile(`public/img/users/${req.file.filename}`);
 
     next();
@@ -53,10 +53,9 @@ exports.memeupload = async (req, res, next) => {
    // console.log(req.file);
     const filteredBody = filterObj(req.body);
     if (req.file) filteredBody.photo = req.file.filename;
-    var x={creatername:req.user.name,photo:filteredBody.photo};
-    //console.log(x);
-    const newuser = await Usermeme.create(x);
-    //console.log(newuser);
+    //console.log(filteredBody);
+    var x= {photo:filteredBody.photo,upname:req.user.name}
+    const newuser = await Newusermeme.create(x);
     res.status(200).json({
       status: "success",
     });
@@ -73,9 +72,9 @@ exports.memeupload = async (req, res, next) => {
 
 exports.memelikess = async (req, res) => {
   try {
-  //  console.log(req.body);
-    var query = { photo: `${req.body.photo}` };
-    const value = req.body.likes * 1 + 1;
+   // console.log(req.body);
+    var query = { photo: `${req.body.ph}` };
+    const value=req.body.likes;
     const ud = await Usermeme.findOneAndUpdate(
       query,
       { $set: { likes: value } },
@@ -83,7 +82,7 @@ exports.memelikess = async (req, res) => {
     );
     res.status(200).json({
       status: "success",
-      data: ud,
+      data: uu.lastItem,
     });
 
     //console.log(newuser);

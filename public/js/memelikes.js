@@ -4,7 +4,7 @@
  memelikess = async (data, count,id) => {
   try {
  // document.getElementById.getElementById("myCheck").checked = true;
-// console.log(id,data);
+ console.log(id,data);
 
     const liked = await axios({
       method: "POST",

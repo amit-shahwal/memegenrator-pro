@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
 //const slugify = require('slugify');
 
-const usermemeSchema = new mongoose.Schema({
+const newusermemeSchema = new mongoose.Schema({
   photo: String,
-  likes: {
-    type: Number,
-    default: 0,
-  },
-  likedid: [
-    {
-      type: String,
-    },
-  ],
   creatername: String,
+  upname: String,
+  likedid: {
+    type: [String],
+    
+  },
 });
 
-const Usermeme = mongoose.model("Usermeme", usermemeSchema);
-module.exports = Usermeme;
+const Newusermeme = mongoose.model("Usermeme", newusermemeSchema);
+module.exports = Newusermeme;
