@@ -5,7 +5,7 @@ import { showAlert } from './alert';
 // type is either 'password' or 'data'
 export const uploadmeme = async (data, type) => {
   try {
- 
+      console.log(data);
     const res = await axios({
       method: 'POST',
       url: "/api/v1/users/memeupload",
