@@ -140,6 +140,7 @@ exports.isLoggedInn = async (req, res, next) => {
 
     const freshexist = await User.findById(freshuser.id);
     // if(freshuser.id)
+    
     if (!freshexist) {
       return res.status(200).render("login", {
         title: "log in to your account",

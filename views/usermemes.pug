@@ -45,9 +45,9 @@ block content
                   speciallikes= `${meme.likes}
                   `
                 center  
-                  a.nav__el.nav__el--memelikes &nbsp &nbsp &nbsp LIKES❤#{meme.likedid.length}
-                  br
-                  input.btn.btn(type='button' id=`${meme.likes}` placeholder=`${meme.photo}` value="LIKE" alt=`${useer._id}`  onclick='memelikess(placeholder,id,alt)')         
+                  //a.nav__el.nav__el--memelikes &nbsp &nbsp &nbsp LIKES❤#{meme.likedid.length}
+                  
+                  input.btn.btn(type='button' id=`${meme.photo}` placeholder=`${meme.likedid.length}`  value=`LIKES❤${meme.likedid.length}` alt=`${useer._id}`  onclick='memelikess(id,placeholder,alt)')         
                   br
                   a(href=`/img/users/${meme.photo}` download='')
                     b DOWNLOAD
