@@ -37,7 +37,7 @@ Users can upload memes created by themseleves.
 
 Users can genrate memes on our platform and can upload that.
 
-![alt text](https://i.ibb.co/Wc9k79J/UPLOAD.png)
+![alt text](https://i.ibb.co/PNRr2nq/Meme-genrator.png)
 
 
 
