@@ -1,7 +1,7 @@
 # Meme Application
 
 ## Brief Description
-Ever tried making memes? Does making memes helps us to earn? Come along with us to the new and exciting world of memes. We at MakeMemes.com gives you opportunity to showcase your creativity and earn by creating memes. We connect memers from all around the globe. Here are some of the memes from the memers who are rocking the meme world.This is a social network for the memers all around the world where you can create and upload memes and the most liked meme creator will be awarded with cash prize. Give it a try and try to open it in laptop as it has some issues with small screen.
+Ever tried making memes? Does making memes help us to earn? Come along with us to the new and exciting world of memes. We at MakeMemes.com allow you to showcase your creativity and earn by creating memes. We connect memers from all around the globe. Here are some of the memes from the memers who are rocking the meme world. This is a social network for memers all around the world where you can create and upload memes and the most liked meme creator will be awarded a cash prize. Give it a try and try to open it on a laptop as it has some issues with the small screen.
 
 ##Features:
 ### 1: LANDING PAGE:
@@ -28,14 +28,14 @@ Users can view all the posts themselves and others have added and can like the p
 
 ### 3. UPLOAD:
 
-Users can upload memes created by themseleves.
+Users can upload memes created by themselves.
 
 ![alt text](https://i.ibb.co/Wc9k79J/UPLOAD.png)
 
 
 ### 4. GENERATE MEME:
 
-Users can genrate memes on our platform and can upload that.
+Users can generate memes on our platform and can upload that.
 
 ![alt text](https://i.ibb.co/PNRr2nq/Meme-genrator.png)
 
@@ -49,7 +49,7 @@ Users can genrate memes on our platform and can upload that.
 
 ## Future scopes:
 * Middleware to check the valid post, restricting from the abusive post.
-* User can add comments on specific meme.
+* User can add comments on the specific meme.
 * Integration With telegram bot for push notification.
 
 ## Setup Steps:
