@@ -42,7 +42,7 @@ Users can generate memes on our platform and can upload that.
 
 
 ## Tech Stack/Technologies Used
-* ejs 
+* Pug (template engine)
 * Node.js
 * Expressjs
 * MongoDb
